@@ -15,6 +15,10 @@
  */
 package io.fabric;
 
+import java.util.List;
+
+import org.apache.camel.Exchange;
+import org.apache.camel.Message;
 import org.apache.camel.RoutesBuilder;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
@@ -26,12 +30,21 @@ public class BeverageTest extends CamelTestSupport {
     @Test
     public void testBeverage() throws Exception {
     	MockEndpoint mock = getMockEndpoint("mock:result");
-    	
-    	mock.expectedBodiesReceived("Total 2 of gintonic ordered");
 
-    	template.sendBody("direct:bar", "Hello World");
+    	mock.expectedMinimumMessageCount(2);
+        mock.setAssertPeriod(500);
         
-    	assertMockEndpointsSatisfied();
+        assertMockEndpointsSatisfied();
+        
+        List<Exchange> exchanges = mock.getReceivedExchanges();
+        int drinks = 0;
+		for (Exchange exchange : exchanges) {
+			drinks += 2;
+			Message message = exchange.getIn();
+			String body = message.getBody().toString();
+			
+			assertEquals("Total " + drinks + " of gintonic ordered", body);
+		}
     }
 
     @Override
@@ -39,7 +52,7 @@ public class BeverageTest extends CamelTestSupport {
         return new RouteBuilder() {
             @Override
             public void configure() throws Exception {
-                from("direct:bar")
+                from("timer:bar?period=100")
                 	.to("beverage:GinTonic?amount=2")
                 	.to("mock:result");
             }
