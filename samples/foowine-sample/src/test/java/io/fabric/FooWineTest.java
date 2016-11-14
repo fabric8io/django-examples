@@ -38,12 +38,12 @@ public class FooWineTest extends CamelTestSupport {
         
         List<Exchange> exchanges = mock.getReceivedExchanges();
         int drinks = 0;
-		for (Exchange exchange : exchanges) {
-			drinks += 2;
-			Message message = exchange.getIn();
-			String body = message.getBody().toString();
+        for (Exchange exchange : exchanges) {
+            drinks += 2;
+            Message message = exchange.getIn();
+            String body = message.getBody().toString();
 			
-			assertEquals("Total " + drinks + " of wine ordered", body);
+            assertEquals("Total " + drinks + " of wine ordered", body);
 		}
     }
 
@@ -53,8 +53,8 @@ public class FooWineTest extends CamelTestSupport {
             @Override
             public void configure() throws Exception {
                 from("foo:hello?period=100")
-                	.to("wine:wine?amount=2")
-                	.to("mock:result");
+                    .to("wine:wine?amount=2")
+                    .to("mock:result");
             }
         };
     }

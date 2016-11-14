@@ -38,13 +38,13 @@ public class BeverageTest extends CamelTestSupport {
         
         List<Exchange> exchanges = mock.getReceivedExchanges();
         int drinks = 0;
-		for (Exchange exchange : exchanges) {
-			drinks += 2;
-			Message message = exchange.getIn();
-			String body = message.getBody().toString();
-			
-			assertEquals("Total " + drinks + " of gintonic ordered", body);
-		}
+        for (Exchange exchange : exchanges) {
+            drinks += 2;
+	        Message message = exchange.getIn();
+            String body = message.getBody().toString();
+	
+            assertEquals("Total " + drinks + " of gintonic ordered", body);
+        }
     }
 
     @Override
@@ -53,8 +53,8 @@ public class BeverageTest extends CamelTestSupport {
             @Override
             public void configure() throws Exception {
                 from("timer:bar?period=100")
-                	.to("beverage:GinTonic?amount=2")
-                	.to("mock:result");
+                    .to("beverage:GinTonic?amount=2")
+                    .to("mock:result");
             }
         };
     }

@@ -46,7 +46,7 @@
       <artifactId>bar-connector</artifactId>
     </dependency>
 
-	<dependency>
+    <dependency>
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-test</artifactId>
       <version>${camel.version}</version>

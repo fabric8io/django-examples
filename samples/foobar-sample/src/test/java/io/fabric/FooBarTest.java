@@ -23,11 +23,11 @@ import org.junit.Test;
 
 public class FooBarTest extends CamelTestSupport {
 
-	@Test
+    @Test
     public void testFooBar() throws Exception {
-		MockEndpoint mock = getMockEndpoint("mock:result");
+        MockEndpoint mock = getMockEndpoint("mock:result");
 
-    	mock.expectedMinimumMessageCount(2);
+        mock.expectedMinimumMessageCount(2);
         mock.setAssertPeriod(500);
     	
         assertMockEndpointsSatisfied();
@@ -40,8 +40,8 @@ public class FooBarTest extends CamelTestSupport {
             @Override
             public void configure() throws Exception {
                 from("foo:hello?period=100")
-                	.to("bar:beer")
-                	.to("mock:result");
+                    .to("bar:beer")
+                    .to("mock:result");
             }
         };
     }
