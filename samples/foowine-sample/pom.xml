@@ -42,6 +42,7 @@
       <groupId>io.fabric8.django</groupId>
       <artifactId>foo-connector</artifactId>
     </dependency>
+    
     <dependency>
       <groupId>io.fabric8.django</groupId>
       <artifactId>wine-connector</artifactId>

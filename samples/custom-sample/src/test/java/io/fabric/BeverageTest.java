@@ -40,7 +40,7 @@ public class BeverageTest extends CamelTestSupport {
         int drinks = 0;
         for (Exchange exchange : exchanges) {
             drinks += 2;
-	        Message message = exchange.getIn();
+            Message message = exchange.getIn();
             String body = message.getBody().toString();
 	
             assertEquals("Total " + drinks + " of gintonic ordered", body);

@@ -44,7 +44,7 @@ public class FooWineTest extends CamelTestSupport {
             String body = message.getBody().toString();
 			
             assertEquals("Total " + drinks + " of wine ordered", body);
-		}
+        }
     }
 
     @Override
