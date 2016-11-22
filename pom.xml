@@ -26,7 +26,7 @@
   <name>Fabric8 :: Django :: Examples</name>
 
   <properties>
-    <django.version>2.3.10</django.version>
+    <django.version>2.3.11</django.version>
   </properties>
 
   <modules>
