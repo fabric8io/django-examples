@@ -98,7 +98,7 @@
       <plugin>
         <groupId>io.fabric8</groupId>
         <artifactId>fabric8-maven-plugin</artifactId>
-        <version>3.2.1</version>
+        <version>3.2.9</version>
       </plugin>
     </plugins>
   </build>
